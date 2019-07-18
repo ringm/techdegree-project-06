@@ -17,14 +17,14 @@ let missed = 0;
 //FUNCTIONS
 //---------------------------------------------
 
-function getRandomPhraseAsArray(arr) {
+const getRandomPhraseAsArray = arr => {
     let randomNum =  Math.floor((Math.random() * arr.length));
     let randomPhrase = arr[randomNum];
     randomPhrase.split('');
     return randomPhrase;
 }
 
-function addPhraseToDisplay(arr) {
+const addPhraseToDisplay = arr => {
     for(let i=0; i < arr.length; i++){
       let li = document.createElement('LI');
       li.textContent = arr[i];
@@ -35,7 +35,7 @@ function addPhraseToDisplay(arr) {
     }
 }
 
-function checkLetter(e) {
+const checkLetter = e => {
   let letterLi = document.querySelectorAll('.letter');
   let letter = '';
   for(let i=0; i<letterLi.length; i++) {
@@ -49,7 +49,7 @@ function checkLetter(e) {
   } else { return null; }
 }
 
-function endScreen(status, message){
+const endScreen = (status, message) => {
   overlayDiv.classList.remove('start');
   overlayDiv.classList.add(status);
   overlayH2.textContent = message;
@@ -57,7 +57,7 @@ function endScreen(status, message){
   overlayDiv.style.display = '';
 }
 
-function checkWin() {
+const checkWin = () => {
   let showLetter = document.querySelectorAll('.show');
   let letterLi = document.querySelectorAll('.letter');
   if(showLetter.length == letterLi.length){
@@ -67,20 +67,20 @@ function checkWin() {
   }
 }
 
-function newGame(){
+const newGame = () => {
   //removes all 'li' elements from 'phrase' ul
   while(phraseUl.hasChildNodes()){
     phraseUl.removeChild(phraseUl.firstElementChild);
   }
   //resets qwerty keyboard
-  for(let i=0; i<qwertyBtns.length;i++){
+  for(let i=0; i<qwertyBtns.length; i++){
     if(qwertyBtns[i].classList.contains('chosen')){
       qwertyBtns[i].classList.remove('chosen');
       qwertyBtns[i].removeAttribute('disabled');
     }
   }
   //resets hearts
-  for(let i=0; i<scoreboard.children.length;i++){
+  for(let i=0; i<scoreboard.children.length; i++){
     scoreboard.children[i].style.display = '';
   }
   //resets overlay screen
@@ -102,11 +102,11 @@ function newGame(){
 //EVENT LISTENERS
 //---------------------------------------------
 
-startButton.addEventListener('click', (e) => {
+startButton.addEventListener('click', e => {
   newGame();
 });
 
-qwerty.addEventListener('click', function(e) {
+qwerty.addEventListener('click', e => {
   let buttonClicked = e.target;
   if(buttonClicked.tagName == 'BUTTON') {
     buttonClicked.classList.add('chosen');
