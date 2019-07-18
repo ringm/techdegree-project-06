@@ -99,6 +99,7 @@ a {
 .show {
   color: #000;
   background-color: #76CE82;
+  transition: 0.5s;
 }
 
 /* Keyboard */
