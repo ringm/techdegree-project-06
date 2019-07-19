@@ -61,11 +61,11 @@ const checkWin = () => {
   let showLetter = document.querySelectorAll('.show');
   let letterLi = document.querySelectorAll('.letter');
   if(showLetter.length == letterLi.length){
-    endScreen('win', 'Congratulations! You won the game!');
+    setTimeout(endScreen, 1000, 'win', 'Congratulations! You won the game!');
   } else if(missed >= 5){
-    endScreen('lose', 'Oh no! You lost all your lives :(');
+    setTimeout(endScreen, 500, 'lose', 'Oh no! You lost all your lives :(');
   }
-}
+};
 
 const newGame = () => {
   //removes all 'li' elements from 'phrase' ul
